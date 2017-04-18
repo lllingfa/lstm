@@ -1,0 +1,72 @@
+#!/bin/bash
+#read the files
+n=1
+m=0
+nf=0
+for file in ./nturgb+d_skeletons/*
+do
+   #get the tag
+   tag1=${file##*A}
+   tag=${tag1%.*}
+   #get the file name
+   file1=${file##*/}
+   file2=${file1%.*}
+   echo $file1
+   #break
+   #echo $file2
+   #file2=S001C002P005R002A008
+   #compare the missing file name
+   for noisefile in `cat data_noise`
+   do
+      noisefile1=${noisefile##*/}
+      if [ $nf -ge 3677 ]
+      then
+          break
+      fi
+      #echo $missfile
+      if [ "$file1" == "$noisefile1" ]
+      then
+         echo "$file1 == $noisefile1"
+         nf=$[ $nf + 1 ]
+         echo "the process noise video : $nf"
+         continue 2
+      fi
+   done
+   for missfile in `cat samples_with_missing_skeleton`
+   do 
+      #if is the end
+      if [ $m -ge 302 ]
+      then
+          break
+      fi
+      #echo $missfile
+      if [ "$file2" == "$missfile" ]
+      then
+         echo "$file2 == $missfile"
+         m=$[ $m + 1 ]
+         echo "the process missing video : $m"
+         continue 2
+      fi
+   done
+   #compare the noise data
+   
+   #split the trainlist and testlist
+   if [ $n -le 47611 ]
+   then
+     echo -e "$file\t$tag" >> trainlist_new
+   else
+     echo -e "$file\t$tag" >> testlist_new
+   fi
+   #split two people and one person
+   if [ $tag -ge 50 ]
+   then
+      echo -e "$file\t$tag" >> trainlist_twopeople
+   else
+      echo -e "$file\t$tag" >> trainlist_oneperson
+   fi
+   #break
+   n=$[ $n + 1 ]
+   echo "the process video : $n"
+  
+done
+

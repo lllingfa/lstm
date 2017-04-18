@@ -1,0 +1,21 @@
+#!/bin/bash
+#read the files
+n=1
+m=0
+nf=0
+for file in ./test_no_noise/*
+do
+   #get the tag
+#   done
+   #compare the noise data
+  # echo $file
+  # break
+   #split the trainlist and testlist
+   echo  $file >> testlist_last1
+   #split two people and one person
+   #break
+   n=$[ $n + 1 ]
+   echo "the process video : $n"
+  
+done
+

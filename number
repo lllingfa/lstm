@@ -1,0 +1,13 @@
+#!/bin/bash
+#calculate every class number for split the trainset and testset
+#calculate class under 10
+for (( i=1; i < 10; i++ ))
+do
+   ls -l ./nturgb+d_skeletons/*00$i.skeleton | wc -l
+done 
+#calculate class upper 10
+for (( i=10; i <= 60 ; i++ ))
+do
+   ls -l ./nturgb+d_skeletons/*0$i.skeleton | wc -l 
+done
+ 

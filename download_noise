@@ -1,0 +1,10 @@
+#!/bin/bash
+#download the noise files
+for noisefile in `cat data_noise`
+do
+    echo $noisefile
+    sudo cp $noisefile /data/llf/data
+    noisefile1=${noisefile##*/}
+    sudo chmod 644 /data/llf/data/$noisefile1
+    #break
+done

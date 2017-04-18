@@ -1,0 +1,10 @@
+#!/bin/bash
+#download the noise files
+for noisefile in `cat /home/icme/codes/lstm_codes/data_test3`
+do
+    echo $noisefile
+    sudo cp $noisefile /data/llf/data_test
+    noisefile1=${noisefile##*/}
+    sudo chmod 644 /data/llf/data_test/$noisefile1
+    #break
+done

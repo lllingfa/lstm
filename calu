@@ -1,0 +1,8 @@
+#!/bin/bash
+
+a=1
+for (( i=1; i<=60; i++ ))
+do
+  echo "the current class is :$i" 
+  cat  nturgb+d_skeletons/*$i.skeleton | head -2
+done
